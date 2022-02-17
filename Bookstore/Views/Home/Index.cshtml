@@ -2,12 +2,17 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model BooksViewModel
+@model List<Books>
+
+    <div class="bg-primary text-white p-2">
+        <span class="navbar-brand m-lg-2">OG Book DB</span>
+    </div>
+
     <div class="text-center">
         <h1 class="display-4">Welcome to the OG Book DB</h1>
     </div>
 
-@foreach (Books b in Model.Books)
+@foreach (Books b in Model)
 {
     <h3>@b.Title</h3>
     <ul>
@@ -22,4 +27,4 @@
     <br />
 }
 
-<div page-blah="@Model.PageInfo" page-action="Index"></div>
+@*<div page-blah="@Model.PageInfo" page-action="Index"></div>*@

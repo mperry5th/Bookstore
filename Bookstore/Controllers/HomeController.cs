@@ -39,10 +39,10 @@ namespace Bookstore.Controllers
                 }
             };
 
-            var data = _repository.Books
-                .OrderBy(b => b.Title)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize);
+            var data = _repository.Books.ToList();
+                //.OrderBy(b => b.Title)
+                //.Skip((pageNum - 1) * pageSize)
+                //.Take(pageSize);
             return View(data);
         }
 

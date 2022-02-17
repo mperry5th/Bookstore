@@ -12,11 +12,11 @@ namespace Bookstore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IBookstoreRepository _repository;
-        public HomeController(ILogger<HomeController> logger, IBookstoreRepository repository)
+        //private readonly ILogger<HomeController> _logger; ILogger<HomeController> logger,
+        private IBookstoreRepository _repository;
+        public HomeController(IBookstoreRepository repository)
         {
-            _logger = logger;
+            //_logger = logger;
             _repository = repository;
         }
 
@@ -39,11 +39,11 @@ namespace Bookstore.Controllers
                 }
             };
 
-            var data = _repository.Books
-                .OrderBy(b => b.Title)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize);
-            return View(data);
+            //var data = _repository.Books
+            //    .OrderBy(b => b.Title)
+            //    .Skip((pageNum - 1) * pageSize)
+            //    .Take(pageSize);
+            return View(x);
         }
 
     }

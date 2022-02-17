@@ -51,8 +51,8 @@ namespace WaterProject.Controllers.Infrastructure
                 if (PageClassesEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    tb.AddCssClass(value: i == PageModel.CurrentPage
-                        ? PageClassSelected : PageClassNormal);
+                    //tb.AddCssClass(value: i == PageModel.CurrentPage
+                    //    ? PageClassSelected : PageClassNormal);
                 }
 
             }

@@ -2,3 +2,31 @@
 @model Bookstore.Pages.SummaryModel
 @{
 }
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome to the OG Book DB</h1>
+</div>
+
+@foreach (var b in Model.basket.Items)
+{
+    <div class="card" style="width: 600px; display: flex; justify-content: center; box-shadow: 10px 10px 8px #888888 ; ">
+        <div class="card-header">
+            <h3>@b.Book.Title</h3>
+        </div>
+        <ul>
+            <li>Author: @b.Book.Author</li>
+            <li>Publisher: @b.Book.Publisher</li>
+            <li>ISBN: @b.Book.Isbn</li>
+            <li>Classification: @b.Book.Classification</li>
+            <li>Category: @b.Book.Category</li>
+            <li>Page Count: @b.Book.PageCount</li>
+            <li>Price: @b.Book.Price</li>
+        </ul>
+    </div>
+    <br />
+}
+
+@*<div page-blah="@Model.basket.Items.Book.PageInfo" page-action="Index"></div>*@

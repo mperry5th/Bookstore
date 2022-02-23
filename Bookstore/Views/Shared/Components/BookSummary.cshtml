@@ -1,0 +1,30 @@
+﻿@{
+}
+
+@model Books
+
+<div class="card" style="width: 600px; display: flex; justify-content: center; box-shadow: 10px 10px 8px #888888 ; ">
+    <div class="card-header">
+        <h3>@Model.Title</h3>
+    </div>
+    <ul>
+        <li>Author: @Model.Author</li>
+        <li>Publisher: @Model.Publisher</li>
+        <li>ISBN: @Model.Isbn</li>
+        <li>Classification: @Model.Classification</li>
+        <li>Category: @Model.Category</li>
+        <li>Page Count: @Model.PageCount</li>
+        <li>Price: @Model.Price</li>
+    </ul>
+</div>
+<br />
+
+<form method="post" asp-page="/Summary">
+
+    <input type="hidden" asp-for="@Model.BookId" />
+    <input type="hidden" name="returnUrl" value="" /> <!--ViewContext.HttpContext.Request.PathAndQuery()-->
+
+    <span class="card-text">
+        <button class="btn btn-success btn-sm float-end" type="submit"></button>
+    </span>
+</form>

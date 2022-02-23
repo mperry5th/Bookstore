@@ -9,21 +9,7 @@
 
 @foreach (Books b in Model.Books)
 {
-<div class="card" style="width: 600px; display: flex; justify-content: center; box-shadow: 10px 10px 8px #888888 ; ">
-    <div class="card-header">
-        <h3>@b.Title</h3>
-    </div>
-        <ul>
-            <li>Author: @b.Author</li>
-            <li>Publisher: @b.Publisher</li>
-            <li>ISBN: @b.Isbn</li>
-            <li>Classification: @b.Classification</li>
-            <li>Category: @b.Category</li>
-            <li>Page Count: @b.PageCount</li>
-            <li>Price: @b.Price</li>
-        </ul>
-    </div>
-    <br />
-    }
+    <partial name="BookSummary" model="b" />
+}
 
 <div page-blah="@Model.PageInfo" page-action="Index"></div>

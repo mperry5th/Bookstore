@@ -30,10 +30,11 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div id="types" class="col-3">
+        <vc:types></vc:types>
+    </div>
+    <div class="container col-9">
             @RenderBody()
-        </main>
     </div>
 
     <footer class="border-top footer text-muted">
@@ -52,3 +53,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+ 

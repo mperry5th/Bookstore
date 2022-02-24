@@ -30,11 +30,13 @@
             </div>
         </nav>
     </header>
-    <div id="types" class="col-3">
-        <vc:types></vc:types>
-    </div>
-    <div class="container col-9">
+    <div class="row">
+        <div id="types" class="col-3 pd-2">
+            <vc:types></vc:types>
+        </div>
+        <div class="container col-9">
             @RenderBody()
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

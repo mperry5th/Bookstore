@@ -69,7 +69,7 @@ namespace Bookstore
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapControllerRoute("typepage", "{projectType}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
+                endpoints.MapControllerRoute("typepage", "{Category}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
 
                 //Add this for custom endpoint (URL style basically)
                 //Executed in order
@@ -79,7 +79,7 @@ namespace Bookstore
                     defaults: new { Controller = "Home", action = "Index", pageNum = 1 }
                     );
 
-                endpoints.MapControllerRoute("type", "{projectType}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+                endpoints.MapControllerRoute("type", "{Category}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();

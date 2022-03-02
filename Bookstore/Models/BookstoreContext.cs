@@ -20,6 +20,7 @@ namespace Bookstore.Models
         }
 
         public virtual DbSet<Books> Books { get; set; }
+        public DbSet<ContactInfo> ContactInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

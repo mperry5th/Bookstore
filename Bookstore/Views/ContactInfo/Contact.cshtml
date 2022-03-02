@@ -1,0 +1,42 @@
+﻿@{
+}
+
+@model ContactInfo
+
+<h2>Enter your Contact Info</h2>
+<p>Enter your details and we will get your books to you</p>
+
+<form method="post" asp-controller="ContactInfo" asp-action="Contact">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <h4>Name</h4>
+
+    <div class="form-group">
+        <label asp-for="FirstName">First Name:</label><input asp-for="FirstName" class="form-control" />
+        <label asp-for="LastName">First Name:</label><input asp-for="LastName" class="form-control" />
+    </div>
+
+    <h4>Address</h4>
+
+    <div class="form-group">
+        <label asp-for="Address">Address:</label><input asp-for="Address" class="form-control" />
+    </div>
+
+    <h4>Email</h4>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label><input asp-for="Email" class="form-control" />
+    </div>
+
+    <h4>Phone Number</h4>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Phone Number:</label><input asp-for="PhoneNumber" class="form-control" />
+    </div>
+
+    <div class="float-end">
+        <input class="btn btn-primary" asp-action="Contact" asp-controller="ContactInfo" type="submit" value="Send Order" />
+    </div>
+
+</form>

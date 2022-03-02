@@ -12,28 +12,33 @@ namespace Bookstore.Pages
     public class SummaryModel : PageModel
     {
         public IBookstoreRepository repo { get; set; }
-
-        public SummaryModel(IBookstoreRepository temp)
-        {
-            repo = temp;
-        }
         public Basket basket { get; set; }
         public string ReturnUrl { get; set; }
+
+        public SummaryModel(IBookstoreRepository temp, Basket b)
+        {
+            repo = temp;
+            basket = b;
+        }
+
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
         public IActionResult OnPost(int bookId, string returnUrl)
         {
             Books p = repo.Books.FirstOrDefault(x => x.BookId == bookId);
 
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(p, 1);
 
-            HttpContext.Session.SetJson("basket", basket);
-
             return RedirectToPage(new { ReturnUrl = returnUrl });
+        }
+
+        public IActionResult OnPostRemove(int BookId, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Book.BookId == BookId).Book);
+
+            return RedirectToPage( new {ReturnUrl = returnUrl});
         }
     }
 }

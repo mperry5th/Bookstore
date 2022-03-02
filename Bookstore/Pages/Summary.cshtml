@@ -10,7 +10,7 @@
     <h1 class="display-4">Your Shopping Cart</h1>
 </div>
 
-<table>
+<table class="table table-dark table-striped">
     <thead>
         <tr>
             <th>Item</th>
@@ -26,8 +26,16 @@
             <tr>
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
-                <td>25</td>
+                <td>$25.00</td>
                 <td>@(i.Quantity * 25)</td>
+
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="bookId" value="@i.Book.BookId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -42,6 +50,7 @@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-secondary" asp-action="Contact" asp-controller="ContactInfo">Checkout</a>
 </div>
 
 @*<div page-blah="@Model.basket.Items.Book.PageInfo" page-action="Index"></div>*@

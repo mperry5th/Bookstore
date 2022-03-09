@@ -1,0 +1,40 @@
+﻿@page "/admin/orders"
+
+@inherits OwningComponentBase<IContactInfoRepository>
+
+<OrderTable TableTitle="Not Yet Shipped" ContactInfo="NotYetShippedContactInfo" ButtonLabel="Shipped" OrderSelected="CollectOrder"></OrderTable>
+
+<OrderTable TableTitle="Shipped" ContactInfo="ShippedContactInfo" ButtonLabel="Reset" OrderSelected="ResetOrder"></OrderTable>
+
+<button class="btn btn-info" @onclick="(x => UpdateData())">Refresh Data</button>
+
+@code {
+
+    public IContactInfoRepository repo => Service;
+
+    public IEnumerable<ContactInfo> AllContactInfo { get; set; }
+    public IEnumerable<ContactInfo> NotYetShippedContactInfo { get; set; }
+    public IEnumerable<ContactInfo> ShippedContactInfo { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        AllContactInfo = await repo.ContactInfo.ToListAsync();
+        NotYetShippedContactInfo = AllContactInfo.Where(x => !x.OrderShipped);
+        ShippedContactInfo = AllContactInfo.Where(x => x.OrderShipped);
+    }
+
+    public void CollectOrder(int id) => UpdateOrder(id, true);
+    public void ResetOrder(int id) => UpdateOrder(id, false);
+
+    private void UpdateOrder(int id, bool shipped)
+    {
+        ContactInfo ci = repo.ContactInfo.FirstOrDefault(x => x.ContactId == id);
+        ci.OrderShipped = shipped;
+        repo.SaveContactInfo(ci);
+    }
+}

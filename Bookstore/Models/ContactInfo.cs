@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Bookstore.Models
 {
@@ -22,6 +23,9 @@ namespace Bookstore.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Please enter your phone number")]
         public string PhoneNumber { get; set; }
+
+        [BindNever]
+        public bool OrderShipped { get; set; }
 
     }
 }

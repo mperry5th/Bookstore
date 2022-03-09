@@ -45,6 +45,8 @@ namespace Bookstore
 
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,8 +88,11 @@ namespace Bookstore
 
                 endpoints.MapControllerRoute("type", "{Category}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 
-                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
             
         }

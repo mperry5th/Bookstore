@@ -10,6 +10,7 @@ namespace Bookstore.Models
 {
     public partial class Books
     {
+        [Key]
         [Required]
         public long BookId { get; set; }
         [Required]

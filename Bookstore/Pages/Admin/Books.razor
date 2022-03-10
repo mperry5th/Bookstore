@@ -2,47 +2,48 @@
 @page "/admin"
 @inherits OwningComponentBase<IBookstoreRepository>
 
-<table class="table table-sm table-dark table-bordered">
+@*I added in a boostrap feature for table hover*@
+<table class="table table-sm table-dark table-bordered table-hover">
 
     <thead>
         <tr>
             <th>Book Id</th>
             <th>Title</th>
-            <th>Regional Program</th>
+            <th>Category</th>
         </tr>
     </thead>
 
     <tbody>
         @if (BookData?.Count() > 0)
-            {
-                @foreach(Bookstore.Models.Books b in BookData)
-                {
-        <tr>
-            <td>@b.BookId</td>
-            <td>@b.Title</td>
-            <td>@b.Category</td>
-
-            <td>
-                <NavLink class="btn btn-info" href="@GetDetailsUrl(b.BookId)">Details</NavLink>
-            </td>
-            <td>
-                <NavLink class="btn btn-warning" href="@GetEditUrl(b.BookId)">Edit</NavLink>
-            </td>
-            <td>
-                <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete</button>
-            </td>
-        </tr>
-                }
-            }
-            else
+        {
+            @foreach (Bookstore.Models.Books b in BookData)
             {
                 <tr>
-                    <td colspan="5" class="text-center">No Projects</td>
+                    <td>@b.BookId</td>
+                    <td>@b.Title</td>
+                    <td>@b.Category</td>
+
+                    <td>
+                        <NavLink class="btn btn-info" href="@GetDetailsUrl(b.BookId)">Details</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-warning" href="@GetEditUrl(b.BookId)">Edit</NavLink>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete</button>
+                    </td>
                 </tr>
             }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No Projects</td>
+            </tr>
+        }
     </tbody>
 
-</table> 
+</table>
 
 <NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
 

@@ -1,4 +1,6 @@
-﻿<table class="table table-striped table-dark">
+﻿
+@*I added in a boostrap feature for table hover*@
+<table class="table table-striped table-dark table-hover">
     <thead>
         <tr>
             <th colspan="5" class="text-center">@TableTitle</th>
@@ -21,7 +23,7 @@
                 </tr>
 
                 @foreach (BasketLineItem bli in ci.Lines)
-                { 
+                {
                     <tr>
                         <td colspan="2"></td>
                         <td>@bli.Book.Title</td>
@@ -38,6 +40,8 @@
         }
     </tbody>
 </table>
+<br />
+
 
 @code {
 

@@ -15,7 +15,7 @@
     <tbody>
         @if (BookData?.Count() > 0)
             {
-                @foreach(Books b in BookData)
+                @foreach(Bookstore.Models.Books b in BookData)
                 {
         <tr>
             <td>@b.BookId</td>
@@ -48,7 +48,7 @@
 
 @code {
     public IBookstoreRepository repo => Service;
-    public IEnumerable<Books> BookData { get; set; }
+    public IEnumerable<Bookstore.Models.Books> BookData { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
@@ -63,7 +63,7 @@
     public string GetDetailsUrl(long id) => $"/admin/books/details/{id}";
     public string GetEditUrl(long id) => $"/admin/books/edit/{id}";
 
-    public async Task RemoveBook(Books b)
+    public async Task RemoveBook(Bookstore.Models.Books b)
     {
         repo.DeleteBook(b);
         await UpdateData();

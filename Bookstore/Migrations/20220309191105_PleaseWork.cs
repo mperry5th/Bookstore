@@ -2,29 +2,10 @@
 
 namespace Bookstore.Migrations
 {
-    public partial class Temp : Migration
+    public partial class PleaseWork : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Books",
-                columns: table => new
-                {
-                    BookID = table.Column<long>(nullable: false),
-                    Title = table.Column<string>(nullable: false),
-                    Author = table.Column<string>(nullable: false),
-                    Publisher = table.Column<string>(nullable: false),
-                    ISBN = table.Column<string>(nullable: false),
-                    Classification = table.Column<string>(nullable: false),
-                    Category = table.Column<string>(nullable: false),
-                    PageCount = table.Column<long>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Books", x => x.BookID);
-                });
-
             migrationBuilder.CreateTable(
                 name: "ContactInfo",
                 columns: table => new

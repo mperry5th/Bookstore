@@ -1,4 +1,4 @@
-﻿@page "/admin/projects/details/{id:long}"
+﻿@page "/admin/books/details/{id:long}"
 
 <h3 class="bg-info text-center text-white">Details</h3>
 
@@ -26,7 +26,7 @@
     [Parameter]
     public long Id { get; set; }
 
-    public Books book { get; set; }
+    public Bookstore.Models.Books book { get; set; }
 
     protected override void OnParametersSet()
     {

@@ -2,7 +2,7 @@
 
 @inherits OwningComponentBase<IContactInfoRepository>
 
-<OrderTable TableTitle="Not Yet Shipped" ContactInfo="NotYetShippedContactInfo" ButtonLabel="Shipped" OrderSelected="CollectOrder"></OrderTable>
+<OrderTable TableTitle="Not Yet Shipped" ContactInfo="NotYetShippedContactInfo" ButtonLabel="Ship it" OrderSelected="CollectOrder"></OrderTable>
 
 <OrderTable TableTitle="Shipped" ContactInfo="ShippedContactInfo" ButtonLabel="Reset" OrderSelected="ResetOrder"></OrderTable>
 
@@ -33,8 +33,8 @@
 
     private void UpdateOrder(int id, bool shipped)
     {
-        ContactInfo ci = repo.ContactInfo.FirstOrDefault(x => x.ContactId == id);
-        ci.OrderShipped = shipped;
-        repo.SaveContactInfo(ci);
+        ContactInfo c = repo.ContactInfo.FirstOrDefault(x => x.ContactId == id);
+        c.OrderShipped = shipped;
+        repo.SaveContactInfo(c);
     }
 }

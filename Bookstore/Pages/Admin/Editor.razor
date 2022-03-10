@@ -45,7 +45,7 @@
             <ValidationMessage For="@(() => b.Category)"></ValidationMessage>
             <InputText class="form-control" @bind-Value="b.Category"></InputText>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label>PageCount</label>
             <ValidationMessage For="@(() => b.PageCount)"></ValidationMessage>
             <InputText class="form-control" @bind-Value="b.PageCount"></InputText>
@@ -54,7 +54,7 @@
             <label>Price</label>
             <ValidationMessage For="@(() => b.Price)"></ValidationMessage>
             <InputText class="form-control" @bind-Value="b.Price"></InputText>
-        </div>
+        </div>*@
 
         <button type="submit" class="btn btn-@ThemeColor">Save</button>
         <NavLink class="btn btn-secondary" href="/admin/books">Cancel</NavLink>
@@ -67,7 +67,7 @@
     public string ThemeColor => Id == 0 ? "primary" : "warning";
     public string TitleText => Id == 0 ? "Create" : "Edit";
 
-    public Books b { get; set; } = new Books();
+    public Bookstore.Models.Books b { get; set; } = new Bookstore.Models.Books();
 
     public IBookstoreRepository repo => Service;
 
@@ -75,7 +75,7 @@
     {
         if(Id != 0)
         {
-            b = repo.Books.FirstOrDefault(x => x.BookId == Id)
+            b = repo.Books.FirstOrDefault(x => x.BookId == Id);
         }
     }
 

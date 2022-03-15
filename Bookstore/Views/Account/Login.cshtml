@@ -13,10 +13,14 @@
 
 <body>
     <div class="bg-dark text-white p-2">
+
         <span class="navbar-brand m-2">Bookstore</span>
+        @* I added this cool growy spinner which is nice *@
+        <div class="spinner-grow"></div>
     </div> 
     <div class="m-1 p-1">
-        <div class="text-danger" asp-validation-summary="All"></div>
+        @* I added the alert-danger class to make the validation more of a warning *@
+        <div class="text-danger alert-danger" asp-validation-summary="All"></div>
 
         <form method="post" asp-controller="Account" asp-action="Login">
             <div class="form-group">

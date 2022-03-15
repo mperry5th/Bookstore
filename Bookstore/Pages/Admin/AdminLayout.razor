@@ -1,9 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="bg-info text-white p-2">
-    @* Added in this jumbotron class *@
-    <span class="jumbotron">Welcome</span>
-    <span class="navbar-brand m-lg-2">Bookstore Administrator</span>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                @* Added in this jumbotron class *@
+                <span class="jumbotron">Welcome</span>
+                <span class="navbar-brand m-lg-2">Bookstore Administrator</span>
+            </div>
+            <div class="col-2">
+                <div class="btn btn-sm btn-primary" href="/account/Logout">Logout</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid">
